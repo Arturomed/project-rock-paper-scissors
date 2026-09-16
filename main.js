@@ -45,15 +45,26 @@ function playRound(humanChoice, computerChoice) {
   return {mensaje, humanScore, computerScore}
 }
 
-humanChoice = getHumanChoice();
-computerChoice = getComputerChoice();
 
-roundOne = playRound(humanChoice, computerChoice)
-console.log(roundOne)
 
-/*
 //Crear function donde se jueguen 5 rondas (main)
 function playGame() {
+  console.log("Bienvenido al juego, estas listo?")
+  let computerPoint = 0
+  let humanPoint = 0 
 
+  for (let i = 0; i < 5; i++) {
+
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    
+    let roundOne = playRound(humanChoice, computerChoice)
+    let {mensaje, humanScore, computerScore} = roundOne
+    humanPoint += humanScore
+    computerPoint += computerScore
+    console.log(`${mensaje} | tu: ${humanPoint} | computer: ${computerPoint}`)
+    prompt()
+  }
 }
-*/
+
+playGame()

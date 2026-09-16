@@ -16,7 +16,6 @@ function getComputerChoice() {
   return eleccion
 }
 
-
 // Crear funcion que aloje la eleccion del usuario
 function getHumanChoice() {
   let entrada = prompt("Piedra, papel o tijeras? ");
@@ -25,26 +24,34 @@ function getHumanChoice() {
 }
 
 
-// Crear funcion para el registro de puntuacion de ambos
-function computerScore() {
-  let score = 0;
-  score += 1;
-  return score;
+// Crear funcion donde se juegue la ronda
+function playRound(humanChoice, computerChoice) {
+  let mensaje = '';
+  let computerScore = 0;
+  let humanScore = 0;
+
+  if (humanChoice === computerChoice) {
+    mensaje = `Ambos ${humanChoice}, nadie gana la ronda.`
+  }
+  else if 
+    ((computerChoice === "piedra" && humanChoice === "papel") || (computerChoice === "papel" && humanChoice === "tijera") || (computerChoice === "tijera" && humanChoice === "piedra")) {
+    mensaje = `Haz ganado ${humanChoice} vende a ${computerChoice}`;
+    humanScore += 1;
+  }
+  else {
+    mensaje = `Haz perdido ${computerChoice} vence a ${humanChoice}`
+    computerScore += 1;
+  }
+  return {mensaje, humanScore, computerScore}
 }
 
+humanChoice = getHumanChoice();
+computerChoice = getComputerChoice();
 
-function humanScore() {
-  let score = 0;
-  score += 1;
-  return score;
-}
+roundOne = playRound(humanChoice, computerChoice)
+console.log(roundOne)
 
 /*
-// Crear funcion donde se juegue la ronda
-function playRound() {
-
-}
-
 //Crear function donde se jueguen 5 rondas (main)
 function playGame() {
 
